@@ -11,7 +11,7 @@ import (
 	"sync"
 
 	// Sudhi's utility library
-	"github.com/opencoff/go-lib/util"
+	"github.com/opencoff/go-utils"
 )
 
 var ErrTooMuchData = errors.New("CDB files are limited to 4GB of data")
@@ -230,7 +230,7 @@ func (cdb *Writer) finalize() (index, error) {
 		return index, err
 	}
 
-	err = util.MmapReader(cdb.writer, 0, sz, hh)
+	err = utils.MmapReader(cdb.writer, 0, sz, hh)
 	if err != nil {
 		return index, err
 	}

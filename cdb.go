@@ -15,8 +15,7 @@ import (
 	"io"
 	"os"
 
-	// Sudhi's utility library
-	"github.com/opencoff/go-lib/util"
+	"github.com/opencoff/go-utils"
 )
 
 const indexSize = 256 * 8
@@ -87,7 +86,7 @@ func verifyChecksum(f *os.File, path string) error {
 
 	// Verify checksum now
 	hh := sha256.New()
-	err = util.MmapReader(f, 0, datasz, hh)
+	err = utils.MmapReader(f, 0, datasz, hh)
 	if err != nil {
 		return fmt.Errorf("i/o error during checksum calculation: %s", err)
 	}
